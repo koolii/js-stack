@@ -13,3 +13,6 @@
 ### flow
 
 * `flow-bin` is the binary to run Flow in our `scripts` tasks
+
+## memo
+* [eslint-env](http://qiita.com/makotot/items/822f592ff8470408be18)
