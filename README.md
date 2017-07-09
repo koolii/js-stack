@@ -8,6 +8,7 @@
 
 ### rules
 
+* `// eslint-disable-next-line` -> this rule is to ignore its after part eslint-rules
 * `no-unexpected-multiline` -> semicolon bugs support
 
 ### flow
