@@ -1,4 +1,34 @@
+### babel-preset-env
+最新のECMAScriptに対応していないブラウザでも使用出来るようにES5等にダウングレードしてくれる
+
+### eslint-airbnb
+下記コマンドを使うことで`eslint-config-airbnb`を使うための関連モジュールを一括でインストールしてくれる
+
+* `eslint-config-airbnb`
+* `eslint-plugin-import`
+* `eslint-plugin-jsx-a11y`
+* `eslint-plugin-react`
+
+### eslint-plugin-compat
+様々なブラウザでJavaScriptのAPIが使えるかどうかをCan I Useを使って判断し、使えないものがある場合はエラー表示してくれる
+
+`package.json`に下記を入れることでブラウザシェアが1%以上のブラウザを対象にすることができる
+```json
+  "browserslist": ["> 1%"]
+```
+
+また、インストールしたcompatを`.eslintrc.json`にも追記しておく
+
+```bash
+npm info eslint-config-airbnb@latest peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs yarn add --dev eslint-config-airbnb@latest
+```
+
 ## eslint
+
+`.eslintrc.json`を使ってeslintの細かい設定を行なう
+
+* `extends`: extends already existant eslint rules
+* `rules`: override rules
 
 ### package
 
