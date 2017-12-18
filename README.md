@@ -68,5 +68,20 @@ suppress_comment= \\(.\\|\n\\)*\\flow-disable-next-line
 Gitでのcommit/push等をフックして、特定のnpm-scriptsを実行させることが出来るモジュール
 `git push --no-verify`を実行することでhuskyに登録しているタスクを実行せずに直接pushすることが可能
 
+### Express
+`comparess`モジュールはExpressのミドルウェアでGzip圧縮させることができるようになる
+
+### Nodemon
+NodemonはNode.jsのバイナリを実行する環境で、--execオプションを設定することで特定のバイナリに変更することができる。
+また、--ignoreオプションは該当するパスに変更があった場合でもマニュアルで更新した際に反映させないと言う設定になる（これはHotReloadはしてくれない）
+
+```nodemon --ignore lib --exec babel-node src/server```
+
+### rimraf
+クロスプラットフォーム対応のフォルダをクリーンにするモジュールで今回はbabelでトランスパイルした結果を配置するフォルダに使用する
+
+### cross-env
+`NODE_ENV=production`という環境変数定義はWindowsでは使えないが、cross-envというモジュールで差異を吸収してくれる
+
 ## memo
 * [eslint-env](http://qiita.com/makotot/items/822f592ff8470408be18)
