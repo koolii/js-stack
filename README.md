@@ -1,6 +1,19 @@
 ### babel-preset-env
 最新のECMAScriptに対応していないブラウザでも使用出来るようにES5等にダウングレードしてくれる
 
+## eslint
+
+`.eslintrc.json`を使ってeslintの細かい設定を行なう
+
+* `extends`: extends already existant eslint rules
+* `rules`: override rules
+
+### package
+
+* `eslint-plugin-compat` -> you can know if javascript APIs can use in brower.
+  * `error  navigator.serviceWorker() is not supported in Safari 10.1, Opera Mini all, iOS Safari 10.0-10.2, IE 11, Edge 14  compat/compat`
+* `plugin:flowtype/recommended` contains the instruction for ESLint to use Babel's parser. If you want to be more explicit, feel free to add "parser": "babel-eslint" in .eslintrc.json.
+
 ### eslint-airbnb
 下記コマンドを使うことで`eslint-config-airbnb`を使うための関連モジュールを一括でインストールしてくれる
 
@@ -23,18 +36,6 @@
 npm info eslint-config-airbnb@latest peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs yarn add --dev eslint-config-airbnb@latest
 ```
 
-## eslint
-
-`.eslintrc.json`を使ってeslintの細かい設定を行なう
-
-* `extends`: extends already existant eslint rules
-* `rules`: override rules
-
-### package
-
-* `eslint-plugin-compat` -> you can know if javascript APIs can use in brower.
-  * `error  navigator.serviceWorker() is not supported in Safari 10.1, Opera Mini all, iOS Safari 10.0-10.2, IE 11, Edge 14  compat/compat`
-* `plugin:flowtype/recommended` contains the instruction for ESLint to use Babel's parser. If you want to be more explicit, feel free to add "parser": "babel-eslint" in .eslintrc.json.
 
 ### rules
 
@@ -43,7 +44,15 @@ npm info eslint-config-airbnb@latest peerDependencies --json | command sed 's/[\
 
 ### flow
 
-* `flow-bin` is the binary to run Flow in our `scripts` tasks
+* `flow-bin`: is the binary to run Flow in our `scripts` tasks(npm-scriptsで実行するためのモジュール)
+* `babel-preset-flow`: babelにflow-typeを認識させるモジュール
+* `eslint-plugin-flowtype`: ESlintでflowtypeをlintするモジュール
+
+`.flowconfig`に下記を追加するとeslint-disableと同じような効果をもたらすことが出来る
+```
+[options]
+suppress_comment= \\(.\\|\n\\)*\\flow-disable-next-line
+```
 
 ## memo
 * [eslint-env](http://qiita.com/makotot/items/822f592ff8470408be18)
