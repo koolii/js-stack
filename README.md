@@ -54,5 +54,19 @@ npm info eslint-config-airbnb@latest peerDependencies --json | command sed 's/[\
 suppress_comment= \\(.\\|\n\\)*\\flow-disable-next-line
 ```
 
+### Jest
+テストランナーで、`babel-jest`パッケージをインストールしてから`.eslintrc.json`に下記を追記することで
+テストファイル内でのjestで定義されている関数呼び出しで特にインポートせず(no-undefエラー)が発生することを防ぐことが出来る
+
+```
+"env": {
+  "jest": true
+}
+```
+
+###  husky
+Gitでのcommit/push等をフックして、特定のnpm-scriptsを実行させることが出来るモジュール
+`git push --no-verify`を実行することでhuskyに登録しているタスクを実行せずに直接pushすることが可能
+
 ## memo
 * [eslint-env](http://qiita.com/makotot/items/822f592ff8470408be18)
