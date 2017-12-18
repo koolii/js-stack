@@ -2,5 +2,11 @@
   "name": "react-sample",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "color": "^2.0.1"
+  }
 }
