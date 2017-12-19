@@ -1,5 +1,12 @@
+## Babel
 ### babel-preset-env
 最新のECMAScriptに対応していないブラウザでも使用出来るようにES5等にダウングレードしてくれる
+
+### babel-preset-react
+ReactをBabelを介して使用するためのモジュール
+
+### babel-plugin-flow-react-proptypes
+Babelを介してFlowでの走査対象のファイルから自動的にReactコンポーネントのProptypesを生成してくれるプラグイン
 
 ## eslint
 
