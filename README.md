@@ -8,6 +8,9 @@
 * `extends`: extends already existant eslint rules
 * `rules`: override rules
 
+envに`jest`を追加することで、jestをimportしなくても定義されている関数呼び出しのエラーがなくなる
+envに`browser`を追加することで、ブラウザでビルトインに定義されている`window`や`document`オブジェクト呼び出しのエラーがなくなる
+
 ### package
 
 * `eslint-plugin-compat` -> you can know if javascript APIs can use in brower.
