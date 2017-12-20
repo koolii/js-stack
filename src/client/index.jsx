@@ -36,6 +36,9 @@ const wrapApp = (AppComponent, reduxStore) => (
   </Provider>
 )
 
+// flow-disable-next-line
+//  null. This type is incompatible with the expected param type ofと言うエラーが出てしまう
+//  ↓も同様
 ReactDOM.render(wrapApp(App, store), rootEl)
 
 // webpack.config.babel.jsのdevServerオブジェクトのhotキー対応？
@@ -46,6 +49,7 @@ if (module.hot) {
   module.hot.accept('./app', () => {
     // eslint-disable-next-line global-require
     const NextApp = require('./app').default
+    // flow-disable-next-line
     ReactDOM.render(wrapApp(NextApp, store), rootEl)
   })
 }
