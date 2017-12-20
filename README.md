@@ -104,8 +104,11 @@ ReactコンポーネントはReduxのactionやstateを感知することはな�
 Reduxのcontainerと言う役割がReactのコンポーネントとの橋渡しを行っている
 
 ### React-Redux
-ReactのコンポーネントとReduxのstoreを連携するためのモジュールで
-ReduxActionを介してReduxのstoreが変更された時に、Reactコンポーネントが自動で更新されるようになっている
+* ReactのコンポーネントとReduxのstoreを連携するためのモジュールで、ReduxActionを介してReduxのstoreが変更された時に、Reactコンポーネントが自動で更新されるようになっている
+* `combineReducers`はstore毎にそれぞれのReducerを対応付けているがそのstateの名前をキーに、valueにReducerを当てはめたオブジェクトを引数に渡すことで、stateとreducerの対応付ができるっぽい(https://redux.js.org/docs/api/combineReducers.html)
+* `createStore`は`combineReducers`で対応付けたstateを１つの大きなstoreオブジェクトにまとめて上げる役割
+* また`createStore`はstore用のデバッグ時の為に可視化できるDevToolを閲覧できるようになる
+
 
 ## memo
 * [eslint-env](http://qiita.com/makotot/items/822f592ff8470408be18)

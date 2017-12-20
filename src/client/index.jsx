@@ -14,11 +14,16 @@ import helloReducer from './reducer/hello'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
+// 作成したそれぞれのstateを１つの巨大なstoreに一括管理している
 const store = createStore(
+  // helloをキーとしてhelloReducerを配置している
   combineReducers({ hello: helloReducer }),
   // eslint-disable-next-line no-underscore-dangle
-  isProd ? undefined : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  isProd ? undefined : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
+
+// eslint-disable-next-line no-console
+console.log(store.getState())
 
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)
