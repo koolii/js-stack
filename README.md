@@ -99,5 +99,13 @@ NodemonはNode.jsのバイナリを実行する環境で、--execオプション
 * `webpack-dev-server`は開発時に使用するwebpack用のサーバで、サーバを立てている間はHOTリローディングしてくれる
 * webpackコマンドの`--progress`オプションは進行具合などが見やすくなっているため有用,`-p`オプションはバンドルファイルをminifyしてくれる
 
+## Redux
+ReactコンポーネントはReduxのactionやstateを感知することはなく、
+Reduxのcontainerと言う役割がReactのコンポーネントとの橋渡しを行っている
+
+### React-Redux
+ReactのコンポーネントとReduxのstoreを連携するためのモジュールで
+ReduxActionを介してReduxのstoreが変更された時に、Reactコンポーネントが自動で更新されるようになっている
+
 ## memo
 * [eslint-env](http://qiita.com/makotot/items/822f592ff8470408be18)
