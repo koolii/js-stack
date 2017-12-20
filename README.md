@@ -1,5 +1,12 @@
+## Babel
 ### babel-preset-env
 最新のECMAScriptに対応していないブラウザでも使用出来るようにES5等にダウングレードしてくれる
+
+### babel-preset-react
+ReactをBabelを介して使用するためのモジュール
+
+### babel-plugin-flow-react-proptypes
+Babelを介してFlowでの走査対象のファイルから自動的にReactコンポーネントのProptypesを生成してくれるプラグイン
 
 ## eslint
 
@@ -45,7 +52,7 @@ npm info eslint-config-airbnb@latest peerDependencies --json | command sed 's/[\
 * `// eslint-disable-next-line` -> this rule is to ignore its after part eslint-rules
 * `no-unexpected-multiline` -> semicolon bugs support
 
-### flow
+## flow
 
 * `flow-bin`: is the binary to run Flow in our `scripts` tasks(npm-scriptsで実行するためのモジュール)
 * `babel-preset-flow`: babelにflow-typeを認識させるモジュール
@@ -57,7 +64,7 @@ npm info eslint-config-airbnb@latest peerDependencies --json | command sed 's/[\
 suppress_comment= \\(.\\|\n\\)*\\flow-disable-next-line
 ```
 
-### Jest
+## Jest
 テストランナーで、`babel-jest`パッケージをインストールしてから`.eslintrc.json`に下記を追記することで
 テストファイル内でのjestで定義されている関数呼び出しで特にインポートせず(no-undefエラー)が発生することを防ぐことが出来る
 
@@ -67,24 +74,30 @@ suppress_comment= \\(.\\|\n\\)*\\flow-disable-next-line
 }
 ```
 
-###  husky
+####  husky
 Gitでのcommit/push等をフックして、特定のnpm-scriptsを実行させることが出来るモジュール
 `git push --no-verify`を実行することでhuskyに登録しているタスクを実行せずに直接pushすることが可能
 
-### Express
+#### Express
 `comparess`モジュールはExpressのミドルウェアでGzip圧縮させることができるようになる
 
-### Nodemon
+#### Nodemon
 NodemonはNode.jsのバイナリを実行する環境で、--execオプションを設定することで特定のバイナリに変更することができる。
 また、--ignoreオプションは該当するパスに変更があった場合でもマニュアルで更新した際に反映させないと言う設定になる（これはHotReloadはしてくれない）
 
 ```nodemon --ignore lib --exec babel-node src/server```
 
-### rimraf
+#### rimraf
 クロスプラットフォーム対応のフォルダをクリーンにするモジュールで今回はbabelでトランスパイルした結果を配置するフォルダに使用する
 
-### cross-env
+#### cross-env
 `NODE_ENV=production`という環境変数定義はWindowsでは使えないが、cross-envというモジュールで差異を吸収してくれる
+
+## Webpack
+* webpackはモジュールバンドラで様々な複数のファイルをそれぞれのまとまりに纏めてくれる
+* `webpack.config.babel.js`の説明は該当ファイルに記載しているのでそちらを参照すること
+* `webpack-dev-server`は開発時に使用するwebpack用のサーバで、サーバを立てている間はHOTリローディングしてくれる
+* webpackコマンドの`--progress`オプションは進行具合などが見やすくなっているため有用,`-p`オプションはバンドルファイルをminifyしてくれる
 
 ## memo
 * [eslint-env](http://qiita.com/makotot/items/822f592ff8470408be18)
