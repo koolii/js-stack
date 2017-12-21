@@ -2,6 +2,7 @@
 
 import 'babel-polyfill'
 
+import Immutable from 'immutable'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
@@ -20,11 +21,13 @@ const composeEnhancers = (
   // eslint-disable-next-line no-underscore-dangle
   isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ) || compose
+// eslint-disable-next-line no-underscore-dangle
+const preloadedState = window.__PRELOADED_STATE__
 
 // 作成したそれぞれのstateを１つの巨大なstoreに一括管理している
 const store = createStore(
-  // helloをキーとしてhelloReducerを配置している
   combineReducers({ hello: helloReducer }),
+  { hello: Immutable.fromJS(preloadedState.hello) },
   composeEnhancers(applyMiddleware(thunkMiddleware)),
 )
 
@@ -53,7 +56,7 @@ if (module.hot) {
   // hot-reloadingの際に下記でなぜrequireしなければならないのかがわからない
   // app以外のReactコンポーネントの変更も感知したいという理由？
   // flow-disable-next-line
-  module.hot.accept('./app', () => {
+  module.hot.accept('../shared/app', () => {
     // eslint-disable-next-line global-require
     const NextApp = require('../shared/app').default
     // flow-disable-next-line
