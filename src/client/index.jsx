@@ -6,7 +6,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import thunkMiddleware from 'redux-thunk'
 
 import App from './app'
 import helloReducer from './reducer/hello'
@@ -14,12 +15,16 @@ import helloReducer from './reducer/hello'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
+const composeEnhancers = (
+  // eslint-disable-next-line no-underscore-dangle
+  isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+) || compose
+
 // 作成したそれぞれのstateを１つの巨大なstoreに一括管理している
 const store = createStore(
   // helloをキーとしてhelloReducerを配置している
   combineReducers({ hello: helloReducer }),
-  // eslint-disable-next-line no-underscore-dangle
-  isProd ? undefined : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  composeEnhancers(applyMiddleware(thunkMiddleware)),
 )
 
 // eslint-disable-next-line no-console

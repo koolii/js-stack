@@ -3,6 +3,8 @@
 import React from 'react'
 import HelloButton from './container/hello-button'
 import Message from './container/message'
+import MessageAsync from './container/message-async'
+import HelloAsyncButton from './container/hello-async-button'
 import { APP_NAME } from '../shared/config'
 
 const App = () => (
@@ -10,6 +12,8 @@ const App = () => (
     <h1>{APP_NAME}</h1>
     <Message />
     <HelloButton />
+    <MessageAsync />
+    <HelloAsyncButton />
   </div>
 )
 
