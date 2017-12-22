@@ -14,6 +14,7 @@ import setUpSocket from './socket'
 const app = express()
 
 // for websocket
+// flow-disable-next-line
 const http = Server(app)
 const io = socketIO(http)
 setUpSocket(io)
