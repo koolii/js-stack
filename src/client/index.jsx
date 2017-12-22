@@ -11,6 +11,9 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom'
 
+import $ from 'jquery'
+import Tether from 'tether'
+
 import App from '../shared/app'
 import helloReducer from '../shared/reducer/hello'
 
@@ -18,6 +21,10 @@ import setUpSocket from './socket'
 
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
+
+window.jQuery = $
+window.Tether = Tether
+require('bootstrap')
 
 const composeEnhancers = (
   // eslint-disable-next-line no-underscore-dangle
