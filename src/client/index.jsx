@@ -19,8 +19,12 @@ import helloReducer from '../shared/reducer/hello'
 
 import setUpSocket from './socket'
 
-import { APP_CONTAINER_SELECTOR } from '../shared/config'
+import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
+
+const jssServerSide = document.querySelector(JSS_SSR_SELECTOR)
+// flow-disable-next-line
+jssServerSide.parentNode.removeChild(jssServerSide)
 
 window.jQuery = $
 window.Tether = Tether
