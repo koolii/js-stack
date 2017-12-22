@@ -14,6 +14,8 @@ import { BrowserRouter } from 'react-router-dom'
 import App from '../shared/app'
 import helloReducer from '../shared/reducer/hello'
 
+import setUpSocket from './socket'
+
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
@@ -30,6 +32,8 @@ const store = createStore(
   { hello: Immutable.fromJS(preloadedState.hello) },
   composeEnhancers(applyMiddleware(thunkMiddleware)),
 )
+
+setUpSocket(store)
 
 // eslint-disable-next-line no-console
 console.log(store.getState())
