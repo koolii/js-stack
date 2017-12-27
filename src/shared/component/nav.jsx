@@ -13,7 +13,7 @@ import {
 
 const handleNavLinkClick = () => {
   $('body').scrollTop(0)
-  $('.js-navbar-colapse').collapse('hide')
+  $('.js-navbar-collapse').collapse('hide')
 }
 
 const Nav = () => (

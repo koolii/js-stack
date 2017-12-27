@@ -2,39 +2,37 @@
 
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import { Provider } from 'react-redux'
-import { StaticRouter } from 'react-router'
 import Helmet from 'react-helmet'
 import { SheetsRegistry, SheetsRegistryProvider } from 'react-jss'
+import { Provider } from 'react-redux'
+import { StaticRouter } from 'react-router'
 
 import initStore from './init-store'
-import App from '../shared/app'
-import { APP_CONTAINER_CLASS, JSS_SSR_CLASS, STATIC_PATH, WDS_PORT } from '../shared/config'
-import { isProd } from '../shared/util'
+import App from './../shared/app'
+import { APP_CONTAINER_CLASS, JSS_SSR_CLASS, STATIC_PATH, WDS_PORT, isProd } from '../shared/config'
 
+// <SheetsRegistryProvider registry={sheets}>
+//   <App />
+// </SheetsRegistryProvider>
 const renderApp = (location: string, plainPartialState: ?Object, routerContext: ?Object = {}) => {
   const store = initStore(plainPartialState)
   const sheets = new SheetsRegistry()
-  // eslint-disable-next-line function-paren-newline
   const appHtml = ReactDOMServer.renderToString(
     <Provider store={store}>
       <StaticRouter location={location} context={routerContext}>
-        <SheetsRegistryProvider registry={sheets}>
-          <App />
-        </SheetsRegistryProvider>
+        <App />
       </StaticRouter>
     </Provider>)
   const head = Helmet.rewind()
-
-  // eslint-disable-next-line no-console
-  console.log(JSON.stringify(store.getState()))
 
   return (
     `<!doctype html>
     <html>
       <head>
+        <meta charset="utf-8">
         ${head.title}
         ${head.meta}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="${STATIC_PATH}/css/bootstrap.min.css">
         <style class="${JSS_SSR_CLASS}">${sheets.toString()}</style>
       </head>
@@ -45,8 +43,8 @@ const renderApp = (location: string, plainPartialState: ?Object, routerContext: 
         </script>
         <script src="${isProd ? STATIC_PATH : `http://localhost:${WDS_PORT}/dist`}/js/bundle.js"></script>
       </body>
-    </html>
-    `)
+    </html>`
+  )
 }
 
 export default renderApp
