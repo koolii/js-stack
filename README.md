@@ -1,5 +1,5 @@
-[![Build Status](https://img.shields.io/travis/GITHUB-USERNAME/GITHUB-REPO.svg?style=flat-square)](https://travis-ci.org/GITHUB-USERNAME/GITHUB-REPO)
-[![Coverage Status](https://img.shields.io/coveralls/GITHUB-USERNAME/GITHUB-REPO.svg?style=flat-square)](https://coveralls.io/github/GITHUB-USERNAME/GITHUB-REPO?branch=master)
+[![Build Status](https://img.shields.io/travis/koolii/js-stack.svg?style=flat-square)](https://travis-ci.org/koolii/js-stack)
+[![Coverage Status](https://img.shields.io/coveralls/koolii/js-stack.svg?style=flat-square)](https://coveralls.io/github/koolii/js-stack?branch=master)
 
 ## Babel
 ### babel-preset-env
