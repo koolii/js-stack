@@ -70,5 +70,9 @@
   },
   "browserslist": [
     "> 1%"
-  ]
+  ],
+  "engines": {
+    "node": "7.x",
+    "yarn": "0.20.3"
+  }
 }
